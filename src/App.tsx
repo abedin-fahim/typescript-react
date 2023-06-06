@@ -13,11 +13,20 @@ function App() {
       return prev.concat(newTodo);
     });
   };
+
+  const removeTodoHandler = (todoId: string) => {
+    setTodos((prev) => {
+      return prev.filter((todo) => todo.id !== todoId);
+    });
+  };
   // const todos = [new Todo('Learn React'), new Todo('Learn Typescript')];
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos
+        onRemoveTodo={removeTodoHandler}
+        items={todos}
+      />
     </div>
   );
 }
